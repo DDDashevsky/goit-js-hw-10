@@ -1,6 +1,8 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import Notiflix from 'notiflix';
 
+const fields = document.querySelectorAll('.field');
 const days = document.querySelector('span[data-days]');
 const hours = document.querySelector('span[data-hours]');
 const minutes = document.querySelector('span[data-minutes]');
@@ -18,7 +20,7 @@ const fp = flatpickr(input, {
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates[0] < currentDate) {
-      alert('Please choose a date in the future');
+      Notiflix.Notify.warning('Please choose a date in the future');
       btn.setAttribute('disabled', 'true');
     } else {
       btn.removeAttribute('disabled');
@@ -46,11 +48,15 @@ btn.addEventListener('click', callback);
 function callback() {
   btn.setAttribute('disabled', 'true');
 
+  for (let i = 0; i < fields.length; i++) {
+    fields[i].classList.add('field--active');
+  }
+
   let timer = setInterval(() => {
     const diff = selectedDate - new Date();
 
     if (diff <= 0) {
-      console.log('fin!');
+      Notiflix.Report.success('That`s it', 'You`ve wasted your time', 'wow!');
       clearInterval(timer);
       return;
     }
