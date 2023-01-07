@@ -70,14 +70,7 @@ function callback() {
     minutes.textContent = convertedDate.minutes;
     seconds.textContent = convertedDate.seconds;
 
-    function addLeadingZero() {
-      days.textContent = days.textContent.padStart(2, '0');
-      hours.textContent = hours.textContent.padStart(2, '0');
-      minutes.textContent = minutes.textContent.padStart(2, '0');
-      seconds.textContent = seconds.textContent.padStart(2, '0');
-    }
-
-    addLeadingZero();
+    addLeadingZero(days, hours, minutes, seconds);
 
     // ======== //
 
@@ -99,4 +92,11 @@ function callback() {
         ? '0' + convertedDate.seconds
         : convertedDate.seconds; */
   }, 1000);
+}
+
+function addLeadingZero(dd, hh, mm, ss) {
+  dd.textContent = dd.textContent.padStart(2, '0');
+  hh.textContent = hh.textContent.padStart(2, '0');
+  mm.textContent = mm.textContent.padStart(2, '0');
+  ss.textContent = ss.textContent.padStart(2, '0');
 }
