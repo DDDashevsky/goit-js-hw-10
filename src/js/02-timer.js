@@ -63,40 +63,13 @@ function callback() {
 
     const convertedDate = convertMs(diff);
 
-    // функция за тз. Не впевнений, що вона повинна бути саме тут, але працює
-
-    days.textContent = convertedDate.days;
-    hours.textContent = convertedDate.hours;
-    minutes.textContent = convertedDate.minutes;
-    seconds.textContent = convertedDate.seconds;
-
-    addLeadingZero(days, hours, minutes, seconds);
-
-    // ======== //
-
-    /*    days.textContent =
-      convertedDate.days < 10 ? '0' + convertedDate.days : convertedDate.days;
-
-    hours.textContent =
-      convertedDate.hours < 10
-        ? '0' + convertedDate.hours
-        : convertedDate.hours;
-
-    minutes.textContent =
-      convertedDate.minutes < 10
-        ? '0' + convertedDate.minutes
-        : convertedDate.minutes;
-
-    seconds.textContent =
-      convertedDate.seconds < 10
-        ? '0' + convertedDate.seconds
-        : convertedDate.seconds; */
+    days.textContent = addLeadingZero(convertedDate.days);
+    hours.textContent = addLeadingZero(convertedDate.hours);
+    minutes.textContent = addLeadingZero(convertedDate.minutes);
+    seconds.textContent = addLeadingZero(convertedDate.seconds);
   }, 1000);
 }
 
-function addLeadingZero(dd, hh, mm, ss) {
-  dd.textContent = dd.textContent.padStart(2, '0');
-  hh.textContent = hh.textContent.padStart(2, '0');
-  mm.textContent = mm.textContent.padStart(2, '0');
-  ss.textContent = ss.textContent.padStart(2, '0');
+function addLeadingZero(value) {
+  return String(value.padStart(2, '0'));
 }
