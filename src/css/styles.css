@@ -12,6 +12,20 @@ body {
   line-height: 1.5;
 }
 
+ul {
+  list-style: none;
+}
+
+li {
+  display: flex;
+  align-items: center;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+}
+
 #search-box {
   font: inherit;
   padding: 8px;
