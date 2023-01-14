@@ -1,4 +1,8 @@
 export default class MarkupMethods {
+  clearMarkup(item) {
+    item.innerHTML = '';
+  }
+
   makeList(responseArray) {
     const markup = responseArray
       .map(({ flags: { svg }, name } = country) => {
